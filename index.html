@@ -40,7 +40,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:var(--deep);font-fam
 #slide-0{padding:0;}
 
 /* COVER */
-.cover-hero{flex:1;min-height:0;background-image:url('imgs/cover_s3.jpg');background-size:cover;background-position:center top;position:relative;}
+.cover-hero{flex:1;min-height:0;background-image:url('imgs/cover_s3.png');background-size:cover;background-position:center top;position:relative;}
 .cover-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,0.15) 0%,rgba(0,0,0,0.0) 40%,rgba(5,4,106,0.75) 100%);}
 .cover-overlay-text{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;text-align:left;padding:20px;}
 .cover-tag{font-family:'Space Mono',monospace;font-size:11px;color:rgba(255,255,255,0.8);letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;display:block;}
@@ -207,7 +207,7 @@ html,body{width:100%;height:100%;overflow:hidden;background:var(--deep);font-fam
 
 /* SPEAKING: MY VACATION REPORT */
 .speaking-layout{flex:1;display:flex;gap:14px;min-height:0;}
-.speaking-destinations{flex:1;display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(2,1fr);gap:8px;min-height:0;}
+.speaking-destinations{flex:1;display:grid;grid-template-columns:repeat(5,1fr);grid-template-rows:repeat(2,1fr);gap:8px;min-height:0;}
 .speaking-dest-card{border-radius:14px;overflow:hidden;position:relative;cursor:pointer;border:2px solid rgba(255,255,255,0.1);transition:transform 0.2s,border-color 0.2s;}
 .speaking-dest-card:hover{transform:scale(1.03);border-color:var(--yellow);}
 .speaking-dest-card img{width:100%;height:100%;object-fit:cover;}
@@ -364,32 +364,32 @@ html,body{width:100%;height:100%;overflow:hidden;background:var(--deep);font-fam
         </div>
         <div class="vocab-words">
           <div class="vocab-word-card" style="background:rgba(0,200,83,0.08);" onclick="this.classList.toggle('active')">
-            <img class="vocab-word-img" src="imgs/vocab_amazing.jpg" alt="amazing">
+            <img class="vocab-word-img" src="imgs/pos_01_amazing.png" alt="amazing">
             <div class="vocab-word-text"><div class="vocab-word-phrase">Amazing</div><div class="vocab-word-meaning">Incredibly impressive or wonderful</div></div>
             <div class="vocab-word-num" style="background:var(--green);">1</div>
           </div>
           <div class="vocab-word-card" style="background:rgba(0,200,83,0.08);" onclick="this.classList.toggle('active')">
-            <img class="vocab-word-img" src="imgs/vocab_friendly.jpg" alt="friendly">
+            <img class="vocab-word-img" src="imgs/pos_05_friendly_people.png" alt="friendly">
             <div class="vocab-word-text"><div class="vocab-word-phrase">Friendly</div><div class="vocab-word-meaning">Warm and welcoming people</div></div>
             <div class="vocab-word-num" style="background:var(--green);">2</div>
           </div>
           <div class="vocab-word-card" style="background:rgba(0,200,83,0.08);" onclick="this.classList.toggle('active')">
-            <img class="vocab-word-img" src="imgs/vocab_breathtaking.jpg" alt="breathtaking">
+            <img class="vocab-word-img" src="imgs/pos_02_fantastic.png" alt="breathtaking">
             <div class="vocab-word-text"><div class="vocab-word-phrase">Breathtaking</div><div class="vocab-word-meaning">So beautiful it takes your breath away</div></div>
             <div class="vocab-word-num" style="background:var(--green);">3</div>
           </div>
           <div class="vocab-word-card" style="background:rgba(0,200,83,0.08);" onclick="this.classList.toggle('active')">
-            <img class="vocab-word-img" src="imgs/vocab_affordable.jpg" alt="affordable">
+            <img class="vocab-word-img" src="imgs/pos_04_wonderful.png" alt="affordable">
             <div class="vocab-word-text"><div class="vocab-word-phrase">Affordable</div><div class="vocab-word-meaning">Reasonably priced, good value</div></div>
             <div class="vocab-word-num" style="background:var(--green);">4</div>
           </div>
           <div class="vocab-word-card" style="background:rgba(0,200,83,0.08);" onclick="this.classList.toggle('active')">
-            <img class="vocab-word-img" src="imgs/vocab_relaxing.jpg" alt="relaxing">
+            <img class="vocab-word-img" src="imgs/pos_06_warm_people.png" alt="relaxing">
             <div class="vocab-word-text"><div class="vocab-word-phrase">Relaxing</div><div class="vocab-word-meaning">Calm and stress-free</div></div>
             <div class="vocab-word-num" style="background:var(--green);">5</div>
           </div>
           <div class="vocab-word-card" style="background:rgba(0,200,83,0.08);" onclick="this.classList.toggle('active')">
-            <img class="vocab-word-img" src="imgs/vocab_unforgettable.jpg" alt="unforgettable">
+            <img class="vocab-word-img" src="imgs/pos_07_found_luggage.png" alt="unforgettable">
             <div class="vocab-word-text"><div class="vocab-word-phrase">Unforgettable</div><div class="vocab-word-meaning">So special you will never forget it</div></div>
             <div class="vocab-word-num" style="background:var(--green);">6</div>
           </div>
@@ -406,32 +406,32 @@ html,body{width:100%;height:100%;overflow:hidden;background:var(--deep);font-fam
         </div>
         <div class="vocab-words">
           <div class="vocab-word-card" style="background:rgba(229,57,53,0.08);" onclick="this.classList.toggle('active')">
-            <img class="vocab-word-img" src="imgs/vocab_awful.jpg" alt="awful">
+            <img class="vocab-word-img" src="imgs/neg_01_horrible.png" alt="awful">
             <div class="vocab-word-text"><div class="vocab-word-phrase">Awful</div><div class="vocab-word-meaning">Extremely bad or unpleasant</div></div>
             <div class="vocab-word-num" style="background:var(--red);">1</div>
           </div>
           <div class="vocab-word-card" style="background:rgba(229,57,53,0.08);" onclick="this.classList.toggle('active')">
-            <img class="vocab-word-img" src="imgs/vocab_crowded.jpg" alt="crowded">
+            <img class="vocab-word-img" src="imgs/neg_03_terrible.png" alt="crowded">
             <div class="vocab-word-text"><div class="vocab-word-phrase">Crowded</div><div class="vocab-word-meaning">Too many people, uncomfortable</div></div>
             <div class="vocab-word-num" style="background:var(--red);">2</div>
           </div>
           <div class="vocab-word-card" style="background:rgba(229,57,53,0.08);" onclick="this.classList.toggle('active')">
-            <img class="vocab-word-img" src="imgs/vocab_overpriced.jpg" alt="overpriced">
+            <img class="vocab-word-img" src="imgs/neg_07_stolen_wallet.png" alt="overpriced">
             <div class="vocab-word-text"><div class="vocab-word-phrase">Overpriced</div><div class="vocab-word-meaning">Too expensive for what you get</div></div>
             <div class="vocab-word-num" style="background:var(--red);">3</div>
           </div>
           <div class="vocab-word-card" style="background:rgba(229,57,53,0.08);" onclick="this.classList.toggle('active')">
-            <img class="vocab-word-img" src="imgs/vocab_disappointing.jpg" alt="disappointing">
+            <img class="vocab-word-img" src="imgs/neg_04_unfriendly.png" alt="disappointing">
             <div class="vocab-word-text"><div class="vocab-word-phrase">Disappointing</div><div class="vocab-word-meaning">Not as good as expected</div></div>
             <div class="vocab-word-num" style="background:var(--red);">4</div>
           </div>
           <div class="vocab-word-card" style="background:rgba(229,57,53,0.08);" onclick="this.classList.toggle('active')">
-            <img class="vocab-word-img" src="imgs/vocab_exhausting.jpg" alt="exhausting">
+            <img class="vocab-word-img" src="imgs/neg_06_lost_luggage.png" alt="exhausting">
             <div class="vocab-word-text"><div class="vocab-word-phrase">Exhausting</div><div class="vocab-word-meaning">Extremely tiring</div></div>
             <div class="vocab-word-num" style="background:var(--red);">5</div>
           </div>
           <div class="vocab-word-card" style="background:rgba(229,57,53,0.08);" onclick="this.classList.toggle('active')">
-            <img class="vocab-word-img" src="imgs/vocab_stressful.jpg" alt="stressful">
+            <img class="vocab-word-img" src="imgs/neg_05_cold_people.png" alt="stressful">
             <div class="vocab-word-text"><div class="vocab-word-phrase">Stressful</div><div class="vocab-word-meaning">Full of worry and pressure</div></div>
             <div class="vocab-word-num" style="background:var(--red);">6</div>
           </div>
@@ -710,36 +710,44 @@ html,body{width:100%;height:100%;overflow:hidden;background:var(--deep);font-fam
   <div class="slide-content">
     <div class="speaking-layout">
       <div class="speaking-destinations">
-        <div class="speaking-dest-card" id="dest-rome" onclick="assignDest(this,'Rome')">
-          <img src="imgs/dest_rome.jpg" alt="Rome">
-          <div class="speaking-dest-label">Rome, Italy</div>
-        </div>
-        <div class="speaking-dest-card" id="dest-tokyo" onclick="assignDest(this,'Tokyo')">
-          <img src="imgs/dest_tokyo.jpg" alt="Tokyo">
-          <div class="speaking-dest-label">Tokyo, Japan</div>
-        </div>
         <div class="speaking-dest-card" id="dest-paris" onclick="assignDest(this,'Paris')">
-          <img src="imgs/dest_paris.jpg" alt="Paris">
+          <img src="imgs/d01_paris.png" alt="Paris">
           <div class="speaking-dest-label">Paris, France</div>
         </div>
-        <div class="speaking-dest-card" id="dest-bali" onclick="assignDest(this,'Bali')">
-          <img src="imgs/dest_bali.jpg" alt="Bali">
-          <div class="speaking-dest-label">Bali, Indonesia</div>
+        <div class="speaking-dest-card" id="dest-tokyo" onclick="assignDest(this,'Tokyo')">
+          <img src="imgs/d02_tokyo.png" alt="Tokyo">
+          <div class="speaking-dest-label">Tokyo, Japan</div>
+        </div>
+        <div class="speaking-dest-card" id="dest-cancun" onclick="assignDest(this,'Cancún')">
+          <img src="imgs/d03_cancun.png" alt="Cancún">
+          <div class="speaking-dest-label">Cancún, Mexico</div>
+        </div>
+        <div class="speaking-dest-card" id="dest-rome" onclick="assignDest(this,'Rome')">
+          <img src="imgs/d04_rome.png" alt="Rome">
+          <div class="speaking-dest-label">Rome, Italy</div>
         </div>
         <div class="speaking-dest-card" id="dest-ny" onclick="assignDest(this,'New York')">
-          <img src="imgs/dest_newyork.jpg" alt="New York">
+          <img src="imgs/d05_newyork.png" alt="New York">
           <div class="speaking-dest-label">New York, USA</div>
         </div>
-        <div class="speaking-dest-card" id="dest-morocco" onclick="assignDest(this,'Morocco')">
-          <img src="imgs/dest_morocco.jpg" alt="Morocco">
-          <div class="speaking-dest-label">Morocco</div>
+        <div class="speaking-dest-card" id="dest-machupicchu" onclick="assignDest(this,'Machu Picchu')">
+          <img src="imgs/d06_machupicchu.png" alt="Machu Picchu">
+          <div class="speaking-dest-label">Machu Picchu, Peru</div>
         </div>
-        <div class="speaking-dest-card" id="dest-london" onclick="assignDest(this,'London')">
-          <img src="imgs/dest_london.jpg" alt="London">
-          <div class="speaking-dest-label">London, UK</div>
+        <div class="speaking-dest-card" id="dest-bali" onclick="assignDest(this,'Bali')">
+          <img src="imgs/d07_bali.png" alt="Bali">
+          <div class="speaking-dest-label">Bali, Indonesia</div>
+        </div>
+        <div class="speaking-dest-card" id="dest-barcelona" onclick="assignDest(this,'Barcelona')">
+          <img src="imgs/d08_barcelona.png" alt="Barcelona">
+          <div class="speaking-dest-label">Barcelona, Spain</div>
+        </div>
+        <div class="speaking-dest-card" id="dest-dubai" onclick="assignDest(this,'Dubai')">
+          <img src="imgs/d09_dubai.png" alt="Dubai">
+          <div class="speaking-dest-label">Dubai, UAE</div>
         </div>
         <div class="speaking-dest-card" id="dest-rio" onclick="assignDest(this,'Rio')">
-          <img src="imgs/dest_rio.jpg" alt="Rio de Janeiro">
+          <img src="imgs/d10_rio.png" alt="Rio de Janeiro">
           <div class="speaking-dest-label">Rio de Janeiro</div>
         </div>
       </div>
@@ -1017,16 +1025,22 @@ document.addEventListener('keydown',e=>{
 // ── WARM-UP: MYSTERY OBJECT RACE ───────────────────────────
 let score1=0, score2=0;
 const OBJECTS = [
-  {zoom:'ZOOM LEVEL 1 — EXTREME CLOSE-UP', hints:['A sponge','A pillow','A towel']},
-  {zoom:'ZOOM LEVEL 1 — EXTREME CLOSE-UP', hints:['A fork','A spoon','A knife']},
-  {zoom:'ZOOM LEVEL 1 — EXTREME CLOSE-UP', hints:['A clock','A phone','A remote']},
-  {zoom:'ZOOM LEVEL 1 — EXTREME CLOSE-UP', hints:['A shoe','A hat','A glove']},
-  {zoom:'ZOOM LEVEL 1 — EXTREME CLOSE-UP', hints:['A bottle','A cup','A bowl']},
+  {img:'imgs/r01_colander.png', zoom:'ZOOM LEVEL 1 — EXTREME CLOSE-UP', hints:['A bowl','A colander','A hat']},
+  {img:'imgs/r02_thimble.png', zoom:'ZOOM LEVEL 1 — EXTREME CLOSE-UP', hints:['A ring','A thimble','A cap']},
+  {img:'imgs/r03_grater.png', zoom:'ZOOM LEVEL 1 — EXTREME CLOSE-UP', hints:['A fence','A grater','A screen']},
+  {img:'imgs/r04_cork.png', zoom:'ZOOM LEVEL 1 — EXTREME CLOSE-UP', hints:['A button','A coin','A cork']},
+  {img:'imgs/r05_notebook_spiral.png', zoom:'ZOOM LEVEL 1 — EXTREME CLOSE-UP', hints:['A spring','A spiral notebook','A wire']},
+  {img:'imgs/r06_keyboard.png', zoom:'ZOOM LEVEL 1 — EXTREME CLOSE-UP', hints:['A keyboard','A floor','A grid']},
+  {img:'imgs/r07_velcro.png', zoom:'ZOOM LEVEL 1 — EXTREME CLOSE-UP', hints:['A brush','A velcro','A carpet']},
+  {img:'imgs/r08_comb.png', zoom:'ZOOM LEVEL 1 — EXTREME CLOSE-UP', hints:['A ruler','A comb','A fence']},
+  {img:'imgs/r09_orange_peel.png', zoom:'ZOOM LEVEL 1 — EXTREME CLOSE-UP', hints:['A lemon','An orange peel','A ball']},
+  {img:'imgs/r10_coin.png', zoom:'ZOOM LEVEL 1 — EXTREME CLOSE-UP', hints:['A button','A medal','A coin']},
 ];
 let objIdx = 0;
 function updateHints(){
   const obj = OBJECTS[objIdx];
   document.getElementById('mysteryZoomLabel').textContent = obj.zoom;
+  document.getElementById('mysteryImg').src = obj.img;
   const chips = document.querySelectorAll('.mystery-hint-chip');
   chips.forEach((c,i)=>{c.textContent=obj.hints[i];c.classList.remove('selected');});
 }
