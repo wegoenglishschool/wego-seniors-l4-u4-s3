@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WE GO &middot; Seniors &middot; L4 U4 &middot; Session 3</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Barlow:wght@400;600;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --deep:#05046A;
+  --navy:#05046A;
+  --mid:#0d0db8;
+  --bright:#0057FF;
+  --light:#7B2FBE;
+  --lavender:#e8d5f5;
+  --yellow:#F1C405;
+  --pink:#E91E8C;
+  --teal:#00BCD4;
+  --orange:#FF6B35;
+  --green:#00C853;
+  --red:#E53935;
+  --white:#ffffff;
+  --purple:#7B2FBE;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{width:100%;height:100%;overflow:hidden;background:var(--deep);font-family:'Barlow',sans-serif;}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(5,4,106,0.97);backdrop-filter:blur(8px);display:flex;align-items:center;gap:6px;padding:8px 12px;border-bottom:2px solid rgba(241,196,5,0.3);}
+.nav-arrow{background:rgba(255,255,255,0.1);border:none;color:white;width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background 0.2s;}
+.nav-arrow:hover{background:rgba(255,255,255,0.25);}
+.nav-pills{display:flex;gap:5px;flex-wrap:nowrap;overflow-x:auto;flex:1;}
+.nav-pill{background:rgba(255,255,255,0.08);border:1.5px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.7);padding:5px 12px;border-radius:20px;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap;transition:all 0.2s;font-family:'Barlow',sans-serif;}
+.nav-pill:hover{background:rgba(255,255,255,0.18);color:white;}
+.nav-pill.active{background:var(--yellow);color:var(--deep);border-color:var(--yellow);}
+.nav-counter{font-size:12px;font-weight:700;color:rgba(255,255,255,0.5);white-space:nowrap;flex-shrink:0;}
+.slides-wrap{width:100%;height:100%;}
+.slide{display:none;width:100%;height:100%;flex-direction:column;overflow:hidden;}
+.slide.active{display:flex;}
+#slide-0{padding:0;}
+
+/* COVER */
+.cover-hero{flex:1;min-height:0;background-image:url('imgs/cover_s3.jpg');background-size:cover;background-position:center top;position:relative;}
+.cover-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,0.15) 0%,rgba(0,0,0,0.0) 40%,rgba(5,4,106,0.75) 100%);}
+.cover-overlay-text{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;text-align:left;padding:20px;}
+.cover-tag{font-family:'Space Mono',monospace;font-size:11px;color:rgba(255,255,255,0.8);letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;display:block;}
+.cover-title{font-family:'Playfair Display',serif;font-size:52px;font-weight:900;color:white;line-height:1.05;text-shadow:0 2px 20px rgba(0,0,0,0.5);margin-bottom:2px;}
+.cover-title span{color:var(--yellow);}
+.cover-vacation{font-family:'Playfair Display',serif;font-size:38px;font-weight:700;color:var(--yellow);line-height:1.1;text-shadow:0 2px 20px rgba(0,0,0,0.5);margin-bottom:8px;}
+.cover-subtitle{font-size:15px;font-weight:600;color:rgba(255,255,255,0.85);margin-bottom:4px;}
+.cover-unit{font-family:'Space Mono',monospace;font-size:13px;color:var(--light);letter-spacing:1px;}
+
+/* LESSON PLAN MODAL */
+.lp-btn{background:rgba(241,196,5,0.15);border:1.5px solid rgba(241,196,5,0.5);color:var(--yellow);font-family:'Space Mono',monospace;font-size:10px;font-weight:700;padding:4px 10px;border-radius:20px;cursor:pointer;white-space:nowrap;letter-spacing:0.5px;transition:background 0.2s;}
+.lp-btn:hover{background:rgba(241,196,5,0.3);}
+.lp-overlay{display:none;position:fixed;inset:0;z-index:999;background:rgba(10,0,30,0.85);backdrop-filter:blur(6px);align-items:center;justify-content:center;}
+.lp-overlay.open{display:flex;}
+.lp-modal{background:linear-gradient(135deg,#020255 0%,#05046A 100%);border:2px solid rgba(241,196,5,0.3);border-radius:20px;width:min(680px,92vw);max-height:82vh;overflow-y:auto;padding:28px 30px;position:relative;box-shadow:0 20px 60px rgba(0,0,0,0.6);}
+.lp-close{position:absolute;top:14px;right:16px;background:rgba(255,255,255,0.1);border:none;color:white;width:32px;height:32px;border-radius:50%;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.2s;}
+.lp-close:hover{background:rgba(255,255,255,0.25);}
+.lp-header{margin-bottom:18px;}
+.lp-activity-badge{font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:3px 10px;border-radius:20px;display:inline-block;margin-bottom:8px;}
+.lp-activity-title{font-family:'Playfair Display',serif;font-size:22px;font-weight:900;color:white;margin-bottom:4px;}
+.lp-meta{font-size:12px;color:rgba(255,255,255,0.5);font-family:'Space Mono',monospace;}
+.lp-section{margin-bottom:16px;}
+.lp-section-title{font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--yellow);margin-bottom:6px;border-bottom:1px solid rgba(241,196,5,0.2);padding-bottom:4px;}
+.lp-section-body{font-size:14px;color:rgba(255,255,255,0.85);line-height:1.65;}
+.lp-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;}
+.lp-box{background:rgba(255,255,255,0.06);border-radius:12px;padding:14px 16px;}
+.lp-box-title{font-family:'Space Mono',monospace;font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px;}
+.lp-box-body{font-size:13px;color:rgba(255,255,255,0.8);line-height:1.6;}
+.lp-do .lp-box-title{color:#00c853;}
+.lp-dont .lp-box-title{color:#ff5252;}
+.cover-buttons{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;padding:8px;background:rgba(5,4,106,0.97);}
+.cover-btn{border:none;border-radius:14px;padding:14px 8px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:4px;transition:transform 0.15s,opacity 0.15s;}
+.cover-btn:hover{transform:scale(1.04);opacity:0.9;}
+.cover-btn-name{font-size:13px;font-weight:900;color:white;text-align:center;line-height:1.2;}
+.cover-btn-sub{font-size:10px;font-weight:600;color:rgba(255,255,255,0.8);text-align:center;line-height:1.2;}
+
+/* SECTION HEADER */
+.section-header{display:flex;align-items:center;gap:10px;padding:10px 16px;flex-shrink:0;border-bottom:2px solid rgba(255,255,255,0.08);}
+.sh-badge{font-family:'Space Mono',monospace;font-size:10px;font-weight:700;padding:4px 10px;border-radius:20px;text-transform:uppercase;letter-spacing:1px;white-space:nowrap;}
+.sh-title{font-family:'Playfair Display',serif;font-size:20px;font-weight:700;color:white;flex:1;}
+.sh-right{display:flex;align-items:center;gap:10px;margin-left:auto;}
+.sh-book{font-family:'Space Mono',monospace;font-size:11px;color:rgba(255,255,255,0.5);white-space:nowrap;}
+.slide-content{flex:1;min-height:0;display:flex;flex-direction:column;padding:14px 16px;gap:12px;overflow:hidden;}
+
+/* WARM-UP: MYSTERY OBJECT RACE */
+.mystery-layout{flex:1;display:flex;gap:14px;min-height:0;}
+.mystery-left{flex:1;display:flex;flex-direction:column;gap:10px;min-height:0;}
+.mystery-img-wrap{flex:1;border-radius:16px;overflow:hidden;border:2px solid rgba(255,255,255,0.15);min-height:0;position:relative;background:#020240;display:flex;align-items:center;justify-content:center;}
+.mystery-img-wrap img{width:100%;height:100%;object-fit:cover;}
+.mystery-zoom-label{position:absolute;top:10px;left:10px;background:rgba(241,196,5,0.9);color:var(--deep);font-family:'Space Mono',monospace;font-size:11px;font-weight:900;padding:4px 10px;border-radius:20px;letter-spacing:1px;}
+.mystery-structures{background:rgba(255,255,255,0.07);border:1.5px solid rgba(255,255,255,0.15);border-radius:14px;padding:12px 16px;flex-shrink:0;}
+.mystery-structures-title{font-family:'Space Mono',monospace;font-size:10px;color:var(--yellow);letter-spacing:1.5px;text-transform:uppercase;font-weight:900;margin-bottom:8px;}
+.mystery-structure-row{display:flex;gap:10px;flex-wrap:wrap;}
+.mystery-structure-chip{background:rgba(241,196,5,0.15);border:1.5px solid rgba(241,196,5,0.4);color:var(--yellow);padding:8px 16px;border-radius:20px;font-size:16px;font-weight:900;}
+.mystery-right{width:280px;display:flex;flex-direction:column;gap:10px;min-height:0;}
+.mystery-teams{display:grid;grid-template-columns:1fr 1fr;gap:8px;flex-shrink:0;}
+.mystery-team{border-radius:14px;padding:14px;text-align:center;}
+.mystery-team-name{font-family:'Space Mono',monospace;font-size:11px;font-weight:900;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;}
+.mystery-team-score{font-size:40px;font-weight:900;color:white;line-height:1;}
+.mystery-team-btn{margin-top:8px;background:rgba(255,255,255,0.15);border:none;color:white;border-radius:8px;padding:4px 10px;font-size:12px;font-weight:700;cursor:pointer;width:100%;}
+.mystery-hint-box{flex:1;background:rgba(255,255,255,0.06);border:1.5px solid rgba(255,255,255,0.15);border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:8px;min-height:0;}
+.mystery-hint-title{font-family:'Space Mono',monospace;font-size:10px;color:var(--orange);letter-spacing:1.5px;text-transform:uppercase;font-weight:900;}
+.mystery-hint-chips{display:flex;flex-direction:column;gap:6px;flex:1;justify-content:center;}
+.mystery-hint-chip{background:rgba(255,107,53,0.15);border:1.5px solid rgba(255,107,53,0.35);color:white;padding:10px 14px;border-radius:12px;font-size:15px;font-weight:700;text-align:center;cursor:pointer;transition:all 0.2s;}
+.mystery-hint-chip:hover{background:rgba(255,107,53,0.3);border-color:var(--orange);}
+.mystery-hint-chip.selected{background:rgba(0,200,83,0.2);border-color:var(--green);color:var(--green);}
+.mystery-nav-row{display:flex;gap:8px;flex-shrink:0;}
+.mystery-nav-btn{flex:1;background:var(--yellow);border:none;color:var(--deep);font-family:'Space Mono',monospace;font-size:12px;font-weight:900;padding:10px;border-radius:12px;cursor:pointer;transition:opacity 0.2s;}
+.mystery-nav-btn:hover{opacity:0.85;}
+.mystery-nav-btn.secondary{background:rgba(255,255,255,0.1);color:white;}
+
+/* VOCAB PRESENTATION: GOOD TRIP / BAD TRIP */
+.vocab-layout{flex:1;display:flex;gap:14px;min-height:0;}
+.vocab-col{flex:1;display:flex;flex-direction:column;gap:8px;min-height:0;}
+.vocab-col-header{display:flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;flex-shrink:0;}
+.vocab-col-icon{font-size:22px;}
+.vocab-col-title{font-size:16px;font-weight:900;color:white;}
+.vocab-col-subtitle{font-size:12px;font-weight:600;color:rgba(255,255,255,0.7);}
+.vocab-words{flex:1;display:flex;flex-direction:column;gap:6px;overflow-y:auto;min-height:0;}
+.vocab-word-card{border-radius:12px;padding:10px 14px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:all 0.2s;border:1.5px solid transparent;}
+.vocab-word-card:hover{border-color:rgba(255,255,255,0.3);}
+.vocab-word-card.active{border-color:var(--yellow);}
+.vocab-word-img{width:52px;height:52px;border-radius:8px;object-fit:cover;flex-shrink:0;background:rgba(255,255,255,0.1);}
+.vocab-word-text{flex:1;}
+.vocab-word-phrase{font-size:16px;font-weight:900;color:white;line-height:1.2;}
+.vocab-word-meaning{font-size:12px;font-weight:600;color:rgba(255,255,255,0.7);margin-top:2px;}
+.vocab-word-num{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;color:var(--deep);flex-shrink:0;}
+
+/* VOCAB PRACTICE: POSTCARD FROM DISASTER (OR PARADISE) */
+.postcard-layout{flex:1;display:flex;gap:14px;min-height:0;}
+.postcard-left{flex:1;display:flex;flex-direction:column;gap:10px;min-height:0;}
+.postcard-card{flex:1;background:rgba(255,255,255,0.97);border-radius:16px;padding:20px 24px;display:flex;flex-direction:column;gap:10px;min-height:0;overflow:hidden;}
+.postcard-card-header{display:flex;align-items:center;justify-content:space-between;flex-shrink:0;}
+.postcard-card-title{font-family:'Playfair Display',serif;font-size:22px;font-weight:900;color:#05046A;}
+.postcard-card-stamp{width:50px;height:50px;border:3px solid #05046A;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:22px;}
+.postcard-lines{flex:1;display:flex;flex-direction:column;gap:8px;overflow-y:auto;}
+.postcard-line{display:flex;align-items:center;gap:10px;border-bottom:1.5px solid rgba(5,4,106,0.15);padding-bottom:8px;}
+.postcard-line-num{width:24px;height:24px;border-radius:50%;background:#05046A;color:white;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900;flex-shrink:0;}
+.postcard-line-label{font-size:13px;font-weight:700;color:rgba(5,4,106,0.6);min-width:80px;flex-shrink:0;}
+.postcard-line-answer{flex:1;font-size:15px;font-weight:900;color:#05046A;font-style:italic;min-height:22px;}
+.postcard-right{width:260px;display:flex;flex-direction:column;gap:10px;min-height:0;}
+.postcard-theme-box{background:rgba(255,255,255,0.07);border-radius:14px;padding:14px;flex-shrink:0;}
+.postcard-theme-title{font-family:'Space Mono',monospace;font-size:10px;color:var(--yellow);letter-spacing:1.5px;text-transform:uppercase;font-weight:900;margin-bottom:8px;}
+.postcard-theme-btns{display:grid;grid-template-columns:1fr 1fr;gap:6px;}
+.postcard-theme-btn{padding:10px;border-radius:10px;border:2px solid transparent;font-size:13px;font-weight:900;cursor:pointer;text-align:center;transition:all 0.2s;}
+.postcard-theme-btn.good{background:rgba(0,200,83,0.15);border-color:rgba(0,200,83,0.4);color:var(--green);}
+.postcard-theme-btn.bad{background:rgba(229,57,53,0.15);border-color:rgba(229,57,53,0.4);color:var(--red);}
+.postcard-theme-btn.active{transform:scale(1.05);}
+.postcard-theme-btn.good.active{background:rgba(0,200,83,0.3);border-color:var(--green);}
+.postcard-theme-btn.bad.active{background:rgba(229,57,53,0.3);border-color:var(--red);}
+.postcard-vocab-ref{flex:1;background:rgba(255,255,255,0.06);border-radius:14px;padding:12px;overflow-y:auto;min-height:0;}
+.postcard-vocab-ref-title{font-family:'Space Mono',monospace;font-size:10px;color:var(--teal);letter-spacing:1.5px;text-transform:uppercase;font-weight:900;margin-bottom:8px;}
+.postcard-vocab-chip{display:inline-block;background:rgba(0,188,212,0.15);border:1px solid rgba(0,188,212,0.3);color:var(--teal);padding:4px 10px;border-radius:20px;font-size:12px;font-weight:700;margin:3px 2px;}
+
+/* GRAMMAR PRESENTATION: SIMPLE PAST — THE TIME MACHINE */
+.grammar-layout{flex:1;display:flex;gap:12px;min-height:0;}
+.grammar-main{flex:1;display:flex;flex-direction:column;gap:10px;min-height:0;overflow-y:auto;}
+.grammar-table-wrap{background:rgba(255,255,255,0.06);border-radius:14px;overflow:hidden;flex-shrink:0;}
+.grammar-table{width:100%;border-collapse:collapse;font-size:13px;}
+.grammar-table th{padding:10px 14px;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:1px;text-transform:uppercase;font-weight:700;border-bottom:2px solid rgba(241,196,5,0.3);text-align:left;}
+.grammar-table td{padding:10px 14px;border-top:1px solid rgba(255,255,255,0.06);color:rgba(255,255,255,0.85);vertical-align:top;}
+.grammar-table .col-type{font-family:'Space Mono',monospace;font-size:11px;color:var(--yellow);font-weight:700;white-space:nowrap;}
+.grammar-table .col-form{font-weight:700;color:white;}
+.grammar-table .col-example{font-style:italic;color:rgba(255,255,255,0.75);}
+.grammar-table .col-neg{color:var(--red);}
+.grammar-table .col-q{color:var(--teal);}
+.grammar-side{width:220px;display:flex;flex-direction:column;gap:10px;flex-shrink:0;}
+.grammar-time-box{background:rgba(255,255,255,0.07);border-radius:14px;padding:14px;}
+.grammar-time-title{font-family:'Space Mono',monospace;font-size:10px;color:var(--yellow);letter-spacing:1.5px;text-transform:uppercase;font-weight:900;margin-bottom:8px;}
+.grammar-time-chip{display:inline-block;background:rgba(241,196,5,0.12);border:1px solid rgba(241,196,5,0.25);color:var(--yellow);padding:5px 10px;border-radius:20px;font-size:12px;font-weight:700;margin:3px 2px;}
+.grammar-rule-box{background:rgba(255,255,255,0.07);border-radius:14px;padding:14px;flex:1;}
+.grammar-rule-title{font-family:'Space Mono',monospace;font-size:10px;color:var(--teal);letter-spacing:1.5px;text-transform:uppercase;font-weight:900;margin-bottom:8px;}
+.grammar-rule-item{display:flex;gap:8px;align-items:flex-start;margin-bottom:8px;}
+.grammar-rule-dot{width:8px;height:8px;border-radius:50%;background:var(--teal);flex-shrink:0;margin-top:5px;}
+.grammar-rule-text{font-size:13px;color:rgba(255,255,255,0.85);line-height:1.5;}
+.grammar-rule-text strong{color:var(--yellow);}
+
+/* GRAMMAR PRACTICE: VACATION STORY BUILDER */
+.gp-layout{flex:1;display:flex;gap:14px;min-height:0;}
+.gp-left{flex:1;display:flex;flex-direction:column;gap:10px;min-height:0;}
+.gp-section-title{font-family:'Space Mono',monospace;font-size:11px;color:var(--yellow);letter-spacing:1.5px;text-transform:uppercase;font-weight:900;flex-shrink:0;}
+.gp-sentences{flex:1;display:flex;flex-direction:column;gap:6px;overflow-y:auto;min-height:0;}
+.gp-sentence{background:rgba(255,255,255,0.07);border:1.5px solid rgba(255,255,255,0.12);border-radius:12px;padding:12px 16px;display:flex;align-items:flex-start;gap:12px;cursor:pointer;transition:all 0.2s;}
+.gp-sentence:hover{border-color:var(--yellow);}
+.gp-sentence.revealed{border-color:var(--green);background:rgba(0,200,83,0.08);}
+.gp-sentence-num{width:28px;height:28px;border-radius:50%;background:var(--yellow);color:var(--deep);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900;flex-shrink:0;}
+.gp-sentence-scrambled{font-size:14px;color:rgba(255,255,255,0.7);line-height:1.5;flex:1;}
+.gp-sentence-answer{font-size:14px;font-weight:700;color:var(--green);margin-top:6px;display:none;}
+.gp-sentence.revealed .gp-sentence-answer{display:block;}
+.gp-right{width:280px;display:flex;flex-direction:column;gap:10px;min-height:0;}
+.gp-postcard{flex:1;background:rgba(255,255,255,0.97);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:8px;min-height:0;overflow-y:auto;}
+.gp-postcard-header{font-family:'Playfair Display',serif;font-size:18px;font-weight:900;color:#05046A;flex-shrink:0;}
+.gp-postcard-subheader{font-size:12px;color:rgba(5,4,106,0.6);font-weight:600;flex-shrink:0;margin-bottom:4px;}
+.gp-postcard-text{font-size:13px;color:#05046A;line-height:1.7;}
+.gp-postcard-blank{display:inline-block;min-width:60px;border-bottom:2px solid #05046A;cursor:pointer;font-weight:900;color:#05046A;text-align:center;padding:0 4px;}
+.gp-postcard-blank.filled{color:var(--purple);border-color:var(--purple);}
+.gp-verb-ref{background:rgba(255,255,255,0.07);border-radius:12px;padding:12px;flex-shrink:0;}
+.gp-verb-ref-title{font-family:'Space Mono',monospace;font-size:10px;color:var(--teal);letter-spacing:1.5px;text-transform:uppercase;font-weight:900;margin-bottom:6px;}
+.gp-verb-table{width:100%;font-size:12px;border-collapse:collapse;}
+.gp-verb-table th{font-family:'Space Mono',monospace;font-size:10px;color:rgba(255,255,255,0.5);padding:4px 8px;text-align:left;border-bottom:1px solid rgba(255,255,255,0.1);}
+.gp-verb-table td{padding:4px 8px;color:rgba(255,255,255,0.85);border-top:1px solid rgba(255,255,255,0.06);}
+.gp-verb-table .base{color:rgba(255,255,255,0.6);}
+.gp-verb-table .past{color:var(--yellow);font-weight:700;}
+
+/* SPEAKING: MY VACATION REPORT */
+.speaking-layout{flex:1;display:flex;gap:14px;min-height:0;}
+.speaking-destinations{flex:1;display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:repeat(2,1fr);gap:8px;min-height:0;}
+.speaking-dest-card{border-radius:14px;overflow:hidden;position:relative;cursor:pointer;border:2px solid rgba(255,255,255,0.1);transition:transform 0.2s,border-color 0.2s;}
+.speaking-dest-card:hover{transform:scale(1.03);border-color:var(--yellow);}
+.speaking-dest-card img{width:100%;height:100%;object-fit:cover;}
+.speaking-dest-label{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(5,4,106,0.9));padding:10px 10px 8px;font-size:14px;font-weight:900;color:white;text-align:center;}
+.speaking-dest-card.assigned{border-color:var(--yellow);}
+.speaking-dest-assigned-badge{position:absolute;top:6px;right:6px;background:var(--yellow);color:var(--deep);font-size:10px;font-weight:900;padding:3px 8px;border-radius:20px;font-family:'Space Mono',monospace;}
+.speaking-side{width:240px;display:flex;flex-direction:column;gap:10px;flex-shrink:0;}
+.speaking-vocab-ref{flex:1;background:rgba(255,255,255,0.06);border-radius:14px;padding:14px;overflow-y:auto;min-height:0;}
+.speaking-vocab-title{font-family:'Space Mono',monospace;font-size:10px;color:var(--yellow);letter-spacing:1.5px;text-transform:uppercase;font-weight:900;margin-bottom:8px;}
+.speaking-vocab-group{margin-bottom:10px;}
+.speaking-vocab-group-label{font-size:11px;font-weight:700;margin-bottom:4px;}
+.speaking-vocab-chip{display:inline-block;padding:4px 10px;border-radius:20px;font-size:12px;font-weight:700;margin:2px 2px;}
+.speaking-prompt-box{background:rgba(255,255,255,0.07);border-radius:14px;padding:12px;flex-shrink:0;}
+.speaking-prompt-title{font-family:'Space Mono',monospace;font-size:10px;color:var(--teal);letter-spacing:1.5px;text-transform:uppercase;font-weight:900;margin-bottom:6px;}
+.speaking-prompt-text{font-size:13px;color:rgba(255,255,255,0.85);line-height:1.5;}
+.speaking-prompt-text strong{color:var(--yellow);}
+
+/* EXIT TICKET: VACATION PREFERENCES BUILDER */
+.et-layout{flex:1;display:flex;gap:14px;min-height:0;}
+.et-questions{flex:1;display:flex;flex-direction:column;gap:6px;overflow-y:auto;min-height:0;}
+.et-question{background:rgba(255,255,255,0.07);border:1.5px solid rgba(255,255,255,0.12);border-radius:12px;padding:12px 16px;display:flex;align-items:center;gap:12px;transition:border-color 0.2s;}
+.et-question.checked{border-color:var(--green);background:rgba(0,200,83,0.07);}
+.et-question-num{width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,0.1);color:white;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:900;flex-shrink:0;}
+.et-question.checked .et-question-num{background:var(--green);color:var(--deep);}
+.et-question-text{flex:1;font-size:14px;font-weight:600;color:rgba(255,255,255,0.9);line-height:1.4;}
+.et-question-options{display:flex;gap:6px;flex-shrink:0;}
+.et-option-btn{padding:6px 14px;border-radius:20px;border:1.5px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.07);color:white;font-size:12px;font-weight:700;cursor:pointer;transition:all 0.2s;}
+.et-option-btn:hover{border-color:var(--yellow);}
+.et-option-btn.selected-yes{background:rgba(0,200,83,0.25);border-color:var(--green);color:var(--green);}
+.et-option-btn.selected-no{background:rgba(229,57,53,0.25);border-color:var(--red);color:var(--red);}
+.et-right{width:280px;display:flex;flex-direction:column;gap:10px;flex-shrink:0;}
+.et-paragraph-box{flex:1;background:rgba(255,255,255,0.07);border:1.5px solid rgba(241,196,5,0.25);border-radius:14px;padding:16px;overflow-y:auto;min-height:0;}
+.et-paragraph-title{font-family:'Space Mono',monospace;font-size:10px;color:var(--yellow);letter-spacing:1.5px;text-transform:uppercase;font-weight:900;margin-bottom:10px;}
+.et-paragraph-text{font-size:14px;color:rgba(255,255,255,0.85);line-height:1.8;}
+.et-paragraph-text .et-highlight{color:var(--yellow);font-weight:900;}
+.et-reset-btn{background:rgba(255,255,255,0.1);border:none;color:white;border-radius:12px;padding:10px;font-size:13px;font-weight:700;cursor:pointer;flex-shrink:0;transition:background 0.2s;}
+.et-reset-btn:hover{background:rgba(255,255,255,0.2);}
+
+/* HOMEWORK */
+.hw-layout{flex:1;display:flex;flex-direction:column;gap:16px;min-height:0;justify-content:center;}
+.hw-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+.hw-card{border-radius:16px;padding:22px 24px;display:flex;flex-direction:column;gap:8px;}
+.hw-card-label{font-size:12px;font-weight:900;color:rgba(255,255,255,0.7);text-transform:uppercase;letter-spacing:1px;}
+.hw-card-pages{font-size:32px;font-weight:900;color:white;}
+.hw-card-desc{font-size:15px;font-weight:600;color:rgba(255,255,255,0.85);line-height:1.4;}
+.hw-reminder{background:rgba(255,255,255,0.07);border-radius:14px;padding:16px 20px;font-size:16px;font-weight:600;color:white;text-align:center;line-height:1.5;}
+.hw-reminder strong{color:var(--yellow);}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <button class="nav-arrow" onclick="prevSlide()">&#8592;</button>
+  <div class="nav-pills" id="navPills"></div>
+  <button class="nav-arrow" onclick="nextSlide()">&#8594;</button>
+  <span class="nav-counter" id="navCounter"></span>
+</nav>
+
+<div class="slides-wrap" id="slidesWrap" style="padding-top:50px;">
+
+<!-- SLIDE 0: COVER -->
+<div class="slide" id="slide-0" style="padding-top:0;">
+  <div class="cover-hero">
+    <div class="cover-overlay"></div>
+    <div class="cover-overlay-text">
+      <span class="cover-tag">WE GO &middot; Seniors &middot; Level 4</span>
+      <div class="cover-title">Unit 4</div>
+      <div class="cover-vacation">On Vacation!</div>
+      <div class="cover-subtitle">Session 3</div>
+      <div class="cover-unit">Simple Past &middot; Travel Vocabulary &middot; 60 min</div>
+    </div>
+  </div>
+  <div class="cover-buttons">
+    <button class="cover-btn" style="background:#7B2FBE;" onclick="goToSlide(1)"><span class="cover-btn-name">Warm-up</span><span class="cover-btn-sub">Mystery Object Race</span></button>
+    <button class="cover-btn" style="background:#0057FF;" onclick="goToSlide(2)"><span class="cover-btn-name">Vocabulary</span><span class="cover-btn-sub">Good Trip / Bad Trip</span></button>
+    <button class="cover-btn" style="background:#F1C405;" onclick="goToSlide(3)"><span class="cover-btn-name" style="color:#05046A;">Vocab Practice</span><span class="cover-btn-sub" style="color:rgba(5,4,106,0.8);">Postcard</span></button>
+    <button class="cover-btn" style="background:#E91E8C;" onclick="goToSlide(4)"><span class="cover-btn-name">Grammar</span><span class="cover-btn-sub">The Time Machine</span></button>
+    <button class="cover-btn" style="background:#FF6B35;" onclick="goToSlide(5)"><span class="cover-btn-name">Grammar Practice</span><span class="cover-btn-sub">Story Builder</span></button>
+    <button class="cover-btn" style="background:#00ACC1;" onclick="goToSlide(6)"><span class="cover-btn-name">Speaking</span><span class="cover-btn-sub">Vacation Report</span></button>
+    <button class="cover-btn" style="background:#E53935;" onclick="goToSlide(7)"><span class="cover-btn-name">Exit Ticket</span><span class="cover-btn-sub">Preferences Builder</span></button>
+    <button class="cover-btn" style="background:#00C853;" onclick="goToSlide(8)"><span class="cover-btn-name">Homework</span><span class="cover-btn-sub">Book p. 88</span></button>
+  </div>
+</div>
+
+<!-- SLIDE 1: WARM-UP — THE MYSTERY OBJECT RACE -->
+<div class="slide" id="slide-1">
+  <div class="section-header">
+    <span class="sh-badge" style="background:#7919ef;color:white;">WARM-UP</span>
+    <span class="sh-title">The Mystery Object Race</span>
+    <div class="sh-right"><button class="lp-btn" onclick="openLP('warmup')">&#128196; Lesson Plan</button><span class="sh-book">8 min</span></div>
+  </div>
+  <div class="slide-content">
+    <div class="mystery-layout">
+      <div class="mystery-left">
+        <div class="mystery-img-wrap" id="mysteryImgWrap">
+          <img id="mysteryImg" src="imgs/mystery_placeholder.jpg" alt="Mystery Object" style="width:100%;height:100%;object-fit:cover;">
+          <div class="mystery-zoom-label" id="mysteryZoomLabel">ZOOM LEVEL 1 — EXTREME CLOSE-UP</div>
+        </div>
+        <div class="mystery-structures">
+          <div class="mystery-structures-title">USE THESE STRUCTURES</div>
+          <div class="mystery-structure-row">
+            <div class="mystery-structure-chip">"It might be a..."</div>
+            <div class="mystery-structure-chip">"It could be a..."</div>
+          </div>
+        </div>
+      </div>
+      <div class="mystery-right">
+        <div class="mystery-teams">
+          <div class="mystery-team" style="background:rgba(0,87,255,0.2);border:2px solid rgba(0,87,255,0.4);">
+            <div class="mystery-team-name" style="color:#39D4FA;">Team 1</div>
+            <div class="mystery-team-score" id="score1">0</div>
+            <button class="mystery-team-btn" onclick="addPoint(1)">+ Point</button>
+          </div>
+          <div class="mystery-team" style="background:rgba(233,30,140,0.2);border:2px solid rgba(233,30,140,0.4);">
+            <div class="mystery-team-name" style="color:#E91E8C;">Team 2</div>
+            <div class="mystery-team-score" id="score2">0</div>
+            <button class="mystery-team-btn" onclick="addPoint(2)">+ Point</button>
+          </div>
+        </div>
+        <div class="mystery-hint-box" id="hintBox">
+          <div class="mystery-hint-title">&#128161; HINT CARD — CHOOSE ONE</div>
+          <div class="mystery-hint-chips" id="hintChips">
+            <div class="mystery-hint-chip" onclick="selectHint(this)">Option A</div>
+            <div class="mystery-hint-chip" onclick="selectHint(this)">Option B</div>
+            <div class="mystery-hint-chip" onclick="selectHint(this)">Option C</div>
+          </div>
+        </div>
+        <div class="mystery-nav-row">
+          <button class="mystery-nav-btn secondary" onclick="prevObject()">&#8592; Prev</button>
+          <button class="mystery-nav-btn" onclick="nextObject()">Next &#8594;</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 2: VOCAB PRESENTATION — GOOD TRIP / BAD TRIP -->
+<div class="slide" id="slide-2">
+  <div class="section-header">
+    <span class="sh-badge" style="background:#0057FF;color:white;">VOCABULARY</span>
+    <span class="sh-title">Good Trip / Bad Trip</span>
+    <div class="sh-right"><button class="lp-btn" onclick="openLP('vocab')">&#128196; Lesson Plan</button><span class="sh-book">pp. 82–83 &nbsp;|&nbsp; 10 min</span></div>
+  </div>
+  <div class="slide-content">
+    <div class="vocab-layout">
+      <!-- GOOD TRIP column -->
+      <div class="vocab-col">
+        <div class="vocab-col-header" style="background:rgba(0,200,83,0.15);border:1.5px solid rgba(0,200,83,0.3);">
+          <div class="vocab-col-icon">&#127774;</div>
+          <div>
+            <div class="vocab-col-title">Good Trip</div>
+            <div class="vocab-col-subtitle">Positive experiences</div>
+          </div>
+        </div>
+        <div class="vocab-words">
+          <div class="vocab-word-card" style="background:rgba(0,200,83,0.08);" onclick="this.classList.toggle('active')">
+            <img class="vocab-word-img" src="imgs/vocab_amazing.jpg" alt="amazing">
+            <div class="vocab-word-text"><div class="vocab-word-phrase">Amazing</div><div class="vocab-word-meaning">Incredibly impressive or wonderful</div></div>
+            <div class="vocab-word-num" style="background:var(--green);">1</div>
+          </div>
+          <div class="vocab-word-card" style="background:rgba(0,200,83,0.08);" onclick="this.classList.toggle('active')">
+            <img class="vocab-word-img" src="imgs/vocab_friendly.jpg" alt="friendly">
+            <div class="vocab-word-text"><div class="vocab-word-phrase">Friendly</div><div class="vocab-word-meaning">Warm and welcoming people</div></div>
+            <div class="vocab-word-num" style="background:var(--green);">2</div>
+          </div>
+          <div class="vocab-word-card" style="background:rgba(0,200,83,0.08);" onclick="this.classList.toggle('active')">
+            <img class="vocab-word-img" src="imgs/vocab_breathtaking.jpg" alt="breathtaking">
+            <div class="vocab-word-text"><div class="vocab-word-phrase">Breathtaking</div><div class="vocab-word-meaning">So beautiful it takes your breath away</div></div>
+            <div class="vocab-word-num" style="background:var(--green);">3</div>
+          </div>
+          <div class="vocab-word-card" style="background:rgba(0,200,83,0.08);" onclick="this.classList.toggle('active')">
+            <img class="vocab-word-img" src="imgs/vocab_affordable.jpg" alt="affordable">
+            <div class="vocab-word-text"><div class="vocab-word-phrase">Affordable</div><div class="vocab-word-meaning">Reasonably priced, good value</div></div>
+            <div class="vocab-word-num" style="background:var(--green);">4</div>
+          </div>
+          <div class="vocab-word-card" style="background:rgba(0,200,83,0.08);" onclick="this.classList.toggle('active')">
+            <img class="vocab-word-img" src="imgs/vocab_relaxing.jpg" alt="relaxing">
+            <div class="vocab-word-text"><div class="vocab-word-phrase">Relaxing</div><div class="vocab-word-meaning">Calm and stress-free</div></div>
+            <div class="vocab-word-num" style="background:var(--green);">5</div>
+          </div>
+          <div class="vocab-word-card" style="background:rgba(0,200,83,0.08);" onclick="this.classList.toggle('active')">
+            <img class="vocab-word-img" src="imgs/vocab_unforgettable.jpg" alt="unforgettable">
+            <div class="vocab-word-text"><div class="vocab-word-phrase">Unforgettable</div><div class="vocab-word-meaning">So special you will never forget it</div></div>
+            <div class="vocab-word-num" style="background:var(--green);">6</div>
+          </div>
+        </div>
+      </div>
+      <!-- BAD TRIP column -->
+      <div class="vocab-col">
+        <div class="vocab-col-header" style="background:rgba(229,57,53,0.15);border:1.5px solid rgba(229,57,53,0.3);">
+          <div class="vocab-col-icon">&#127783;</div>
+          <div>
+            <div class="vocab-col-title">Bad Trip</div>
+            <div class="vocab-col-subtitle">Negative experiences</div>
+          </div>
+        </div>
+        <div class="vocab-words">
+          <div class="vocab-word-card" style="background:rgba(229,57,53,0.08);" onclick="this.classList.toggle('active')">
+            <img class="vocab-word-img" src="imgs/vocab_awful.jpg" alt="awful">
+            <div class="vocab-word-text"><div class="vocab-word-phrase">Awful</div><div class="vocab-word-meaning">Extremely bad or unpleasant</div></div>
+            <div class="vocab-word-num" style="background:var(--red);">1</div>
+          </div>
+          <div class="vocab-word-card" style="background:rgba(229,57,53,0.08);" onclick="this.classList.toggle('active')">
+            <img class="vocab-word-img" src="imgs/vocab_crowded.jpg" alt="crowded">
+            <div class="vocab-word-text"><div class="vocab-word-phrase">Crowded</div><div class="vocab-word-meaning">Too many people, uncomfortable</div></div>
+            <div class="vocab-word-num" style="background:var(--red);">2</div>
+          </div>
+          <div class="vocab-word-card" style="background:rgba(229,57,53,0.08);" onclick="this.classList.toggle('active')">
+            <img class="vocab-word-img" src="imgs/vocab_overpriced.jpg" alt="overpriced">
+            <div class="vocab-word-text"><div class="vocab-word-phrase">Overpriced</div><div class="vocab-word-meaning">Too expensive for what you get</div></div>
+            <div class="vocab-word-num" style="background:var(--red);">3</div>
+          </div>
+          <div class="vocab-word-card" style="background:rgba(229,57,53,0.08);" onclick="this.classList.toggle('active')">
+            <img class="vocab-word-img" src="imgs/vocab_disappointing.jpg" alt="disappointing">
+            <div class="vocab-word-text"><div class="vocab-word-phrase">Disappointing</div><div class="vocab-word-meaning">Not as good as expected</div></div>
+            <div class="vocab-word-num" style="background:var(--red);">4</div>
+          </div>
+          <div class="vocab-word-card" style="background:rgba(229,57,53,0.08);" onclick="this.classList.toggle('active')">
+            <img class="vocab-word-img" src="imgs/vocab_exhausting.jpg" alt="exhausting">
+            <div class="vocab-word-text"><div class="vocab-word-phrase">Exhausting</div><div class="vocab-word-meaning">Extremely tiring</div></div>
+            <div class="vocab-word-num" style="background:var(--red);">5</div>
+          </div>
+          <div class="vocab-word-card" style="background:rgba(229,57,53,0.08);" onclick="this.classList.toggle('active')">
+            <img class="vocab-word-img" src="imgs/vocab_stressful.jpg" alt="stressful">
+            <div class="vocab-word-text"><div class="vocab-word-phrase">Stressful</div><div class="vocab-word-meaning">Full of worry and pressure</div></div>
+            <div class="vocab-word-num" style="background:var(--red);">6</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 3: VOCAB PRACTICE — POSTCARD FROM DISASTER (OR PARADISE) -->
+<div class="slide" id="slide-3">
+  <div class="section-header">
+    <span class="sh-badge" style="background:#F1C405;color:#05046A;">VOCAB PRACTICE</span>
+    <span class="sh-title">Postcard from Disaster (or Paradise)</span>
+    <div class="sh-right"><button class="lp-btn" onclick="openLP('vocabprac')">&#128196; Lesson Plan</button><span class="sh-book">pp. 82–83 &nbsp;|&nbsp; 10 min</span></div>
+  </div>
+  <div class="slide-content">
+    <div class="postcard-layout">
+      <div class="postcard-left">
+        <div class="postcard-card">
+          <div class="postcard-card-header">
+            <div class="postcard-card-title">&#128140; Travel Postcard</div>
+            <div class="postcard-card-stamp">&#9992;</div>
+          </div>
+          <div class="postcard-lines" id="postcardLines">
+            <div class="postcard-line">
+              <div class="postcard-line-num">1</div>
+              <div class="postcard-line-label">The weather was...</div>
+              <div class="postcard-line-answer" id="ans1"></div>
+            </div>
+            <div class="postcard-line">
+              <div class="postcard-line-num">2</div>
+              <div class="postcard-line-label">The hotel was...</div>
+              <div class="postcard-line-answer" id="ans2"></div>
+            </div>
+            <div class="postcard-line">
+              <div class="postcard-line-num">3</div>
+              <div class="postcard-line-label">The food was...</div>
+              <div class="postcard-line-answer" id="ans3"></div>
+            </div>
+            <div class="postcard-line">
+              <div class="postcard-line-num">4</div>
+              <div class="postcard-line-label">The people were...</div>
+              <div class="postcard-line-answer" id="ans4"></div>
+            </div>
+            <div class="postcard-line">
+              <div class="postcard-line-num">5</div>
+              <div class="postcard-line-label">The activities were...</div>
+              <div class="postcard-line-answer" id="ans5"></div>
+            </div>
+            <div class="postcard-line">
+              <div class="postcard-line-num">6</div>
+              <div class="postcard-line-label">Overall, the trip was...</div>
+              <div class="postcard-line-answer" id="ans6"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="postcard-right">
+        <div class="postcard-theme-box">
+          <div class="postcard-theme-title">CHOOSE THEME</div>
+          <div class="postcard-theme-btns">
+            <button class="postcard-theme-btn good" onclick="setTheme('good',this)">&#127774; Paradise</button>
+            <button class="postcard-theme-btn bad" onclick="setTheme('bad',this)">&#128128; Disaster</button>
+          </div>
+        </div>
+        <div class="postcard-vocab-ref">
+          <div class="postcard-vocab-ref-title">WORD BANK</div>
+          <div id="wordBank">
+            <span class="postcard-vocab-chip" style="background:rgba(0,200,83,0.15);border-color:rgba(0,200,83,0.3);color:var(--green);">Amazing</span>
+            <span class="postcard-vocab-chip" style="background:rgba(0,200,83,0.15);border-color:rgba(0,200,83,0.3);color:var(--green);">Friendly</span>
+            <span class="postcard-vocab-chip" style="background:rgba(0,200,83,0.15);border-color:rgba(0,200,83,0.3);color:var(--green);">Breathtaking</span>
+            <span class="postcard-vocab-chip" style="background:rgba(0,200,83,0.15);border-color:rgba(0,200,83,0.3);color:var(--green);">Affordable</span>
+            <span class="postcard-vocab-chip" style="background:rgba(0,200,83,0.15);border-color:rgba(0,200,83,0.3);color:var(--green);">Relaxing</span>
+            <span class="postcard-vocab-chip" style="background:rgba(0,200,83,0.15);border-color:rgba(0,200,83,0.3);color:var(--green);">Unforgettable</span>
+            <span class="postcard-vocab-chip" style="background:rgba(229,57,53,0.15);border-color:rgba(229,57,53,0.3);color:var(--red);">Awful</span>
+            <span class="postcard-vocab-chip" style="background:rgba(229,57,53,0.15);border-color:rgba(229,57,53,0.3);color:var(--red);">Crowded</span>
+            <span class="postcard-vocab-chip" style="background:rgba(229,57,53,0.15);border-color:rgba(229,57,53,0.3);color:var(--red);">Overpriced</span>
+            <span class="postcard-vocab-chip" style="background:rgba(229,57,53,0.15);border-color:rgba(229,57,53,0.3);color:var(--red);">Disappointing</span>
+            <span class="postcard-vocab-chip" style="background:rgba(229,57,53,0.15);border-color:rgba(229,57,53,0.3);color:var(--red);">Exhausting</span>
+            <span class="postcard-vocab-chip" style="background:rgba(229,57,53,0.15);border-color:rgba(229,57,53,0.3);color:var(--red);">Stressful</span>
+          </div>
+        </div>
+        <button class="mystery-nav-btn secondary" onclick="clearPostcard()" style="flex-shrink:0;padding:10px;">&#128465; Clear Postcard</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 4: GRAMMAR PRESENTATION — SIMPLE PAST: THE TIME MACHINE -->
+<div class="slide" id="slide-4">
+  <div class="section-header">
+    <span class="sh-badge" style="background:#E91E8C;color:white;">GRAMMAR</span>
+    <span class="sh-title">Simple Past — The Time Machine</span>
+    <div class="sh-right"><button class="lp-btn" onclick="openLP('grammar')">&#128196; Lesson Plan</button><span class="sh-book">pp. 79–80 &nbsp;|&nbsp; 10 min</span></div>
+  </div>
+  <div class="slide-content">
+    <div class="grammar-layout">
+      <div class="grammar-main">
+        <div class="grammar-table-wrap">
+          <table class="grammar-table">
+            <thead>
+              <tr>
+                <th style="color:var(--yellow);">TYPE</th>
+                <th style="color:var(--yellow);">FORM</th>
+                <th style="color:var(--yellow);">AFFIRMATIVE &#10003;</th>
+                <th style="color:var(--yellow);">NEGATIVE &#10007;</th>
+                <th style="color:var(--yellow);">QUESTION ?</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="col-type">Regular</td>
+                <td class="col-form">verb + <span style="color:var(--yellow);">-ed</span></td>
+                <td class="col-example">She <strong>visited</strong> Paris.</td>
+                <td class="col-example col-neg">She <strong>didn't visit</strong> Paris.</td>
+                <td class="col-example col-q"><strong>Did</strong> she visit Paris?</td>
+              </tr>
+              <tr>
+                <td class="col-type">Regular</td>
+                <td class="col-form">verb + <span style="color:var(--yellow);">-ed</span></td>
+                <td class="col-example">They <strong>stayed</strong> at a hotel.</td>
+                <td class="col-example col-neg">They <strong>didn't stay</strong> there.</td>
+                <td class="col-example col-q"><strong>Did</strong> they stay there?</td>
+              </tr>
+              <tr>
+                <td class="col-type">Irregular</td>
+                <td class="col-form">changes form</td>
+                <td class="col-example">He <strong>went</strong> to the beach.</td>
+                <td class="col-example col-neg">He <strong>didn't go</strong> there.</td>
+                <td class="col-example col-q"><strong>Did</strong> he go there?</td>
+              </tr>
+              <tr>
+                <td class="col-type">Irregular</td>
+                <td class="col-form">changes form</td>
+                <td class="col-example">We <strong>ate</strong> amazing food.</td>
+                <td class="col-example col-neg">We <strong>didn't eat</strong> there.</td>
+                <td class="col-example col-q"><strong>Did</strong> you eat there?</td>
+              </tr>
+              <tr>
+                <td class="col-type">WH Question</td>
+                <td class="col-form">WH + did + base</td>
+                <td colspan="3" class="col-example col-q"><strong>Where did</strong> you go? &nbsp;&nbsp; <strong>What did</strong> you do? &nbsp;&nbsp; <strong>Who did</strong> you meet?</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="grammar-side">
+        <div class="grammar-time-box">
+          <div class="grammar-time-title">TIME EXPRESSIONS</div>
+          <span class="grammar-time-chip">yesterday</span>
+          <span class="grammar-time-chip">last week</span>
+          <span class="grammar-time-chip">last year</span>
+          <span class="grammar-time-chip">ago</span>
+          <span class="grammar-time-chip">in 2019</span>
+          <span class="grammar-time-chip">last summer</span>
+        </div>
+        <div class="grammar-rule-box">
+          <div class="grammar-rule-title">KEY RULES</div>
+          <div class="grammar-rule-item">
+            <div class="grammar-rule-dot"></div>
+            <div class="grammar-rule-text">Regular verbs: add <strong>-ed</strong> (visit → visited)</div>
+          </div>
+          <div class="grammar-rule-item">
+            <div class="grammar-rule-dot"></div>
+            <div class="grammar-rule-text">Irregular verbs: <strong>change completely</strong> (go → went)</div>
+          </div>
+          <div class="grammar-rule-item">
+            <div class="grammar-rule-dot"></div>
+            <div class="grammar-rule-text">Negative: <strong>didn't</strong> + base form</div>
+          </div>
+          <div class="grammar-rule-item">
+            <div class="grammar-rule-dot"></div>
+            <div class="grammar-rule-text">Question: <strong>Did</strong> + subject + base form</div>
+          </div>
+          <div class="grammar-rule-item">
+            <div class="grammar-rule-dot"></div>
+            <div class="grammar-rule-text">No <strong>-ed</strong> in negatives or questions!</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 5: GRAMMAR PRACTICE — VACATION STORY BUILDER -->
+<div class="slide" id="slide-5">
+  <div class="section-header">
+    <span class="sh-badge" style="background:#FF6B35;color:white;">GRAMMAR PRACTICE</span>
+    <span class="sh-title">Vacation Story Builder</span>
+    <div class="sh-right"><button class="lp-btn" onclick="openLP('grammarprac')">&#128196; Lesson Plan</button><span class="sh-book">pp. 80–81 &nbsp;|&nbsp; 10 min</span></div>
+  </div>
+  <div class="slide-content">
+    <div class="gp-layout">
+      <div class="gp-left">
+        <div class="gp-section-title">&#128260; EXERCISE 1 — UNSCRAMBLE THE VACATION (click to reveal)</div>
+        <div class="gp-sentences">
+          <div class="gp-sentence" onclick="this.classList.toggle('revealed')">
+            <div class="gp-sentence-num">1</div>
+            <div style="flex:1;">
+              <div class="gp-sentence-scrambled">beach / we / last / visited / the / summer</div>
+              <div class="gp-sentence-answer">&#10003; We visited the beach last summer.</div>
+            </div>
+          </div>
+          <div class="gp-sentence" onclick="this.classList.toggle('revealed')">
+            <div class="gp-sentence-num">2</div>
+            <div style="flex:1;">
+              <div class="gp-sentence-scrambled">didn't / she / hotel / the / like</div>
+              <div class="gp-sentence-answer">&#10003; She didn't like the hotel.</div>
+            </div>
+          </div>
+          <div class="gp-sentence" onclick="this.classList.toggle('revealed')">
+            <div class="gp-sentence-num">3</div>
+            <div style="flex:1;">
+              <div class="gp-sentence-scrambled">did / go / where / you / vacation / on ?</div>
+              <div class="gp-sentence-answer">&#10003; Where did you go on vacation?</div>
+            </div>
+          </div>
+          <div class="gp-sentence" onclick="this.classList.toggle('revealed')">
+            <div class="gp-sentence-num">4</div>
+            <div style="flex:1;">
+              <div class="gp-sentence-scrambled">took / they / photos / beautiful / many</div>
+              <div class="gp-sentence-answer">&#10003; They took many beautiful photos.</div>
+            </div>
+          </div>
+          <div class="gp-sentence" onclick="this.classList.toggle('revealed')">
+            <div class="gp-sentence-num">5</div>
+            <div style="flex:1;">
+              <div class="gp-sentence-scrambled">food / he / local / tried / the / didn't</div>
+              <div class="gp-sentence-answer">&#10003; He didn't try the local food.</div>
+            </div>
+          </div>
+          <div class="gp-sentence" onclick="this.classList.toggle('revealed')">
+            <div class="gp-sentence-num">6</div>
+            <div style="flex:1;">
+              <div class="gp-sentence-scrambled">did / meet / who / you / trip / the / on ?</div>
+              <div class="gp-sentence-answer">&#10003; Who did you meet on the trip?</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="gp-right">
+        <div class="gp-section-title" style="flex-shrink:0;">&#128140; EXERCISE 2 — COMPLETE JOAN'S POSTCARD</div>
+        <div class="gp-postcard">
+          <div class="gp-postcard-header">&#128140; Joan's Postcard</div>
+          <div class="gp-postcard-subheader">Complete with Simple Past (base forms shown)</div>
+          <div class="gp-postcard-text">
+            Last summer, Joan <span class="gp-postcard-blank" onclick="fillBlank(this,'went')" title="go">[go]</span> to Italy with her family. They <span class="gp-postcard-blank" onclick="fillBlank(this,'stayed')" title="stay">[stay]</span> at a small hotel near the coast. Every morning, Joan <span class="gp-postcard-blank" onclick="fillBlank(this,'ate')" title="eat">[eat]</span> fresh bread and fruit. One day, they <span class="gp-postcard-blank" onclick="fillBlank(this,'visited')" title="visit">[visit]</span> the Colosseum in Rome. Joan <span class="gp-postcard-blank" onclick="fillBlank(this,'took')" title="take">[take]</span> hundreds of photos. Unfortunately, it <span class="gp-postcard-blank" onclick="fillBlank(this,'rained')" title="rain">[rain]</span> on the last day, but they <span class="gp-postcard-blank" onclick="fillBlank(this,'had')" title="have">[have]</span> an unforgettable trip!
+          </div>
+        </div>
+        <div class="gp-verb-ref">
+          <div class="gp-verb-ref-title">VERB REFERENCE</div>
+          <table class="gp-verb-table">
+            <thead><tr><th>Base</th><th>Past</th><th>Base</th><th>Past</th></tr></thead>
+            <tbody>
+              <tr><td class="base">go</td><td class="past">went</td><td class="base">eat</td><td class="past">ate</td></tr>
+              <tr><td class="base">stay</td><td class="past">stayed</td><td class="base">take</td><td class="past">took</td></tr>
+              <tr><td class="base">visit</td><td class="past">visited</td><td class="base">have</td><td class="past">had</td></tr>
+              <tr><td class="base">rain</td><td class="past">rained</td><td class="base">see</td><td class="past">saw</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 6: SPEAKING — MY VACATION REPORT -->
+<div class="slide" id="slide-6">
+  <div class="section-header">
+    <span class="sh-badge" style="background:#00ACC1;color:white;">SPEAKING</span>
+    <span class="sh-title">My Vacation Report</span>
+    <div class="sh-right"><button class="lp-btn" onclick="openLP('speaking')">&#128196; Lesson Plan</button><span class="sh-book">pp. 82–83 &nbsp;|&nbsp; 12 min</span></div>
+  </div>
+  <div class="slide-content">
+    <div class="speaking-layout">
+      <div class="speaking-destinations">
+        <div class="speaking-dest-card" id="dest-rome" onclick="assignDest(this,'Rome')">
+          <img src="imgs/dest_rome.jpg" alt="Rome">
+          <div class="speaking-dest-label">Rome, Italy</div>
+        </div>
+        <div class="speaking-dest-card" id="dest-tokyo" onclick="assignDest(this,'Tokyo')">
+          <img src="imgs/dest_tokyo.jpg" alt="Tokyo">
+          <div class="speaking-dest-label">Tokyo, Japan</div>
+        </div>
+        <div class="speaking-dest-card" id="dest-paris" onclick="assignDest(this,'Paris')">
+          <img src="imgs/dest_paris.jpg" alt="Paris">
+          <div class="speaking-dest-label">Paris, France</div>
+        </div>
+        <div class="speaking-dest-card" id="dest-bali" onclick="assignDest(this,'Bali')">
+          <img src="imgs/dest_bali.jpg" alt="Bali">
+          <div class="speaking-dest-label">Bali, Indonesia</div>
+        </div>
+        <div class="speaking-dest-card" id="dest-ny" onclick="assignDest(this,'New York')">
+          <img src="imgs/dest_newyork.jpg" alt="New York">
+          <div class="speaking-dest-label">New York, USA</div>
+        </div>
+        <div class="speaking-dest-card" id="dest-morocco" onclick="assignDest(this,'Morocco')">
+          <img src="imgs/dest_morocco.jpg" alt="Morocco">
+          <div class="speaking-dest-label">Morocco</div>
+        </div>
+        <div class="speaking-dest-card" id="dest-london" onclick="assignDest(this,'London')">
+          <img src="imgs/dest_london.jpg" alt="London">
+          <div class="speaking-dest-label">London, UK</div>
+        </div>
+        <div class="speaking-dest-card" id="dest-rio" onclick="assignDest(this,'Rio')">
+          <img src="imgs/dest_rio.jpg" alt="Rio de Janeiro">
+          <div class="speaking-dest-label">Rio de Janeiro</div>
+        </div>
+      </div>
+      <div class="speaking-side">
+        <div class="speaking-vocab-ref">
+          <div class="speaking-vocab-title">VOCABULARY REFERENCE</div>
+          <div class="speaking-vocab-group">
+            <div class="speaking-vocab-group-label" style="color:var(--green);">&#10003; Positive</div>
+            <span class="speaking-vocab-chip" style="background:rgba(0,200,83,0.15);color:var(--green);">amazing</span>
+            <span class="speaking-vocab-chip" style="background:rgba(0,200,83,0.15);color:var(--green);">breathtaking</span>
+            <span class="speaking-vocab-chip" style="background:rgba(0,200,83,0.15);color:var(--green);">relaxing</span>
+            <span class="speaking-vocab-chip" style="background:rgba(0,200,83,0.15);color:var(--green);">affordable</span>
+            <span class="speaking-vocab-chip" style="background:rgba(0,200,83,0.15);color:var(--green);">friendly</span>
+            <span class="speaking-vocab-chip" style="background:rgba(0,200,83,0.15);color:var(--green);">unforgettable</span>
+          </div>
+          <div class="speaking-vocab-group">
+            <div class="speaking-vocab-group-label" style="color:var(--red);">&#10007; Negative</div>
+            <span class="speaking-vocab-chip" style="background:rgba(229,57,53,0.15);color:var(--red);">awful</span>
+            <span class="speaking-vocab-chip" style="background:rgba(229,57,53,0.15);color:var(--red);">crowded</span>
+            <span class="speaking-vocab-chip" style="background:rgba(229,57,53,0.15);color:var(--red);">overpriced</span>
+            <span class="speaking-vocab-chip" style="background:rgba(229,57,53,0.15);color:var(--red);">disappointing</span>
+            <span class="speaking-vocab-chip" style="background:rgba(229,57,53,0.15);color:var(--red);">exhausting</span>
+            <span class="speaking-vocab-chip" style="background:rgba(229,57,53,0.15);color:var(--red);">stressful</span>
+          </div>
+        </div>
+        <div class="speaking-prompt-box">
+          <div class="speaking-prompt-title">SPEAKING PROMPT</div>
+          <div class="speaking-prompt-text">
+            Give a <strong>3–4 sentence</strong> report about your assigned destination using <strong>Simple Past</strong>. Include at least <strong>one positive</strong> and <strong>one negative</strong> experience. Classmates: ask <strong>one follow-up question</strong>!
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 7: EXIT TICKET — VACATION PREFERENCES BUILDER -->
+<div class="slide" id="slide-7">
+  <div class="section-header">
+    <span class="sh-badge" style="background:#E53935;color:white;">EXIT TICKET</span>
+    <span class="sh-title">Vacation Preferences Builder</span>
+    <div class="sh-right"><button class="lp-btn" onclick="openLP('exitticket')">&#128196; Lesson Plan</button><span class="sh-book">p. 83 &nbsp;|&nbsp; 8 min</span></div>
+  </div>
+  <div class="slide-content">
+    <div class="et-layout">
+      <div class="et-questions">
+        <div class="et-question" id="etq1">
+          <div class="et-question-num">1</div>
+          <div class="et-question-text">Do you like vacations where people speak your language?</div>
+          <div class="et-question-options">
+            <button class="et-option-btn" onclick="answerQ(1,'yes',this)">Yes</button>
+            <button class="et-option-btn" onclick="answerQ(1,'no',this)">No</button>
+          </div>
+        </div>
+        <div class="et-question" id="etq2">
+          <div class="et-question-num">2</div>
+          <div class="et-question-text">Do you prefer beach vacations over city trips?</div>
+          <div class="et-question-options">
+            <button class="et-option-btn" onclick="answerQ(2,'yes',this)">Yes</button>
+            <button class="et-option-btn" onclick="answerQ(2,'no',this)">No</button>
+          </div>
+        </div>
+        <div class="et-question" id="etq3">
+          <div class="et-question-num">3</div>
+          <div class="et-question-text">Is trying local food an important part of your trip?</div>
+          <div class="et-question-options">
+            <button class="et-option-btn" onclick="answerQ(3,'yes',this)">Yes</button>
+            <button class="et-option-btn" onclick="answerQ(3,'no',this)">No</button>
+          </div>
+        </div>
+        <div class="et-question" id="etq4">
+          <div class="et-question-num">4</div>
+          <div class="et-question-text">Do you like to plan every detail before your trip?</div>
+          <div class="et-question-options">
+            <button class="et-option-btn" onclick="answerQ(4,'yes',this)">Yes</button>
+            <button class="et-option-btn" onclick="answerQ(4,'no',this)">No</button>
+          </div>
+        </div>
+        <div class="et-question" id="etq5">
+          <div class="et-question-num">5</div>
+          <div class="et-question-text">Would you prefer a relaxing resort over an adventure trip?</div>
+          <div class="et-question-options">
+            <button class="et-option-btn" onclick="answerQ(5,'yes',this)">Yes</button>
+            <button class="et-option-btn" onclick="answerQ(5,'no',this)">No</button>
+          </div>
+        </div>
+        <div class="et-question" id="etq6">
+          <div class="et-question-num">6</div>
+          <div class="et-question-text">Is traveling with family more important than traveling with friends?</div>
+          <div class="et-question-options">
+            <button class="et-option-btn" onclick="answerQ(6,'yes',this)">Yes</button>
+            <button class="et-option-btn" onclick="answerQ(6,'no',this)">No</button>
+          </div>
+        </div>
+      </div>
+      <div class="et-right">
+        <div class="et-paragraph-box">
+          <div class="et-paragraph-title">&#128196; YOUR VACATION PROFILE</div>
+          <div class="et-paragraph-text" id="etParagraph">
+            Answer the questions to build your vacation profile paragraph...
+          </div>
+        </div>
+        <button class="et-reset-btn" onclick="resetET()">&#8635; Reset</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 8: HOMEWORK -->
+<div class="slide" id="slide-8">
+  <div class="section-header">
+    <span class="sh-badge" style="background:#00C853;color:#05046A;">HOMEWORK</span>
+    <span class="sh-title">Book Exercises</span>
+    <div class="sh-right"><span class="sh-book">p. 88</span></div>
+  </div>
+  <div class="slide-content">
+    <div class="hw-layout">
+      <div class="hw-cards">
+        <div class="hw-card" style="background:rgba(255,107,53,0.2);border:2px solid rgba(255,107,53,0.4);">
+          <div class="hw-card-label">Exercise C</div>
+          <div class="hw-card-pages">p. 88</div>
+          <div class="hw-card-desc">More Practice — Simple Past sentences about travel experiences.</div>
+        </div>
+        <div class="hw-card" style="background:rgba(0,188,212,0.2);border:2px solid rgba(0,188,212,0.4);">
+          <div class="hw-card-label">Exercise D</div>
+          <div class="hw-card-pages">p. 88</div>
+          <div class="hw-card-desc">More Practice — Complete the paragraph using correct Simple Past forms.</div>
+        </div>
+      </div>
+      <div class="hw-reminder">
+        Complete <strong>Exercises C and D</strong> on page 88 for next class. Use the <strong>Simple Past</strong> tense and the vocabulary from today's lesson!
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /slides-wrap -->
+
+<!-- LESSON PLAN MODAL -->
+<div class="lp-overlay" id="lpOverlay" onclick="if(event.target===this)closeLP()">
+  <div class="lp-modal" id="lpModal">
+    <button class="lp-close" onclick="closeLP()">&#215;</button>
+    <div id="lpContent"></div>
+  </div>
+</div>
+
+<script>
+// ── LP DATA ────────────────────────────────────────────────
+const LP_DATA = {
+  warmup: {
+    badge:'WARM-UP', badgeColor:'#7919ef',
+    title:'The Mystery Object Race',
+    book:'No book page',
+    goal:'Students awaken friendly competitiveness, foster fast visual attention, and practice passive vocabulary and speculative grammar structures.',
+    cues:'"Keep your microphones ON! I will show you a picture very close. What is it? Remember to say: \'It might be a...\' or \'It could be a...\'. No idea? Okay, here are your three options — choose one! Zoom out... Who was right?"',
+    dos:'Award extra points if they can say which room the object belongs in. Keep the pace fast and energetic. Use the hint card only when no one guesses after the first zoom-out.',
+    donts:'Do NOT reveal the hint card before giving students a chance to guess on their own first.'
+  },
+  vocab: {
+    badge:'VOCABULARY', badgeColor:'#0057FF',
+    title:'Good Trip / Bad Trip',
+    book:'pp. 82–83',
+    goal:'Students correctly pronounce and categorize adjectives and phrases describing positive and negative travel experiences.',
+    cues:'"Look at the green column. These are great experiences! [Name], repeat these three: amazing, friendly, warm. Excellent. Now the red column..."',
+    dos:'Correct pronunciation immediately and ask the student to repeat before moving on. Ensure everyone participates in the rotation.',
+    donts:'Do NOT let one student pronounce the whole list. Do NOT explain the meaning if it\'s obvious from the image.'
+  },
+  vocabprac: {
+    badge:'VOCAB PRACTICE', badgeColor:'#F1C405', badgeTextColor:'#05046A',
+    title:'Postcard from Disaster (or Paradise)',
+    book:'pp. 82–83',
+    goal:'Students actively use positive and negative travel vocabulary in a structured context to create a coherent narrative.',
+    cues:'"Are we writing about a good trip or a bad trip? A bad one? Okay! [Name], complete the first blank: The weather was... what? Awful? Great, I am typing it!"',
+    dos:'Keep the energy high. Encourage students to be creative or dramatic with their choices.',
+    donts:'Do NOT mix positive and negative words randomly if the class decided on a specific theme for the postcard.'
+  },
+  grammar: {
+    badge:'GRAMMAR', badgeColor:'#E91E8C',
+    title:'Simple Past — The Time Machine',
+    book:'pp. 79–80',
+    goal:'Students recognize the structure and rules of the Simple Past tense for regular and irregular verbs.',
+    cues:'"Look at the table. For regular verbs, we add -ed. For irregular verbs, they change completely. [Name], please read the affirmative examples aloud."',
+    dos:'Focus purely on structure recognition. Correct pronunciation of -ed endings if necessary.',
+    donts:'Do NOT ask students to create their own sentences yet. Do NOT complete any exercises during presentation.'
+  },
+  grammarprac: {
+    badge:'GRAMMAR PRACTICE', badgeColor:'#FF6B35',
+    title:'Vacation Story Builder',
+    book:'pp. 80–81',
+    goal:'Students accurately apply Simple Past rules to unscramble sentences and conjugate verbs in context.',
+    cues:'"Let\'s unscramble these sentences. [Name], look at number 1. What is the subject? What is the verb? Good! Now [Name 2], let\'s look at Joan\'s postcard..."',
+    dos:'Guide students through the unscrambling process if they struggle. Provide immediate feedback on verb conjugations.',
+    donts:'Do NOT move to the next student if the current one makes a mistake; guide them to the correct answer first.'
+  },
+  speaking: {
+    badge:'SPEAKING', badgeColor:'#00ACC1',
+    title:'My Vacation Report',
+    book:'pp. 82–83',
+    goal:'Students produce spontaneous oral narratives using Simple Past and travel vocabulary, and formulate relevant questions.',
+    cues:'"[Name], your destination is Rome. Tell us about your trip! Use the adjectives on the screen. Class, listen carefully and think of a question to ask!"',
+    dos:'Encourage a mix of positive and negative experiences. Ensure classmates ask questions.',
+    donts:'Do NOT interrupt the student\'s flow to correct minor errors; correct them after they finish speaking.'
+  },
+  exitticket: {
+    badge:'EXIT TICKET', badgeColor:'#E53935',
+    title:'Vacation Preferences Builder',
+    book:'p. 83',
+    goal:'Students express travel preferences and read a cohesive summary paragraph about their choices.',
+    cues:'"[Name], let\'s build your vacation profile. Do you like vacations with people who speak your language? Yes? Okay, I am checking the box... Look, your paragraph is growing! Now read the final result aloud!"',
+    dos:'Make the process interactive. Celebrate the final generated paragraph.',
+    donts:'Do NOT rush the reading of the final paragraph. Ensure the student reads it clearly.'
+  }
+};
+
+function openLP(key) {
+  const d = LP_DATA[key];
+  if(!d) return;
+  const badgeTextColor = d.badgeTextColor || 'white';
+  document.getElementById('lpContent').innerHTML = `
+    <div class="lp-header">
+      <span class="lp-activity-badge" style="background:${d.badge==='VOCAB PRACTICE'?'#F1C405':'rgba(255,255,255,0.1)'};color:${d.badge==='VOCAB PRACTICE'?'#05046A':'white'}">${d.badge}</span>
+      <div class="lp-activity-title">${d.title}</div>
+      <div class="lp-meta">Book: ${d.book}</div>
+    </div>
+    <div class="lp-section">
+      <div class="lp-section-title">LEARNING GOAL</div>
+      <div class="lp-section-body">${d.goal}</div>
+    </div>
+    <div class="lp-section">
+      <div class="lp-section-title">TEACHER CUES</div>
+      <div class="lp-section-body" style="font-style:italic;">${d.cues}</div>
+    </div>
+    <div class="lp-grid">
+      <div class="lp-box lp-do">
+        <div class="lp-box-title">DO'S ✓</div>
+        <div class="lp-box-body">${d.dos}</div>
+      </div>
+      <div class="lp-box lp-dont">
+        <div class="lp-box-title">DON'TS ✗</div>
+        <div class="lp-box-body">${d.donts}</div>
+      </div>
+    </div>`;
+  document.getElementById('lpOverlay').classList.add('open');
+}
+function closeLP() { document.getElementById('lpOverlay').classList.remove('open'); }
+
+// ── SLIDES NAV ─────────────────────────────────────────────
+const SLIDES = ['slide-0','slide-1','slide-2','slide-3','slide-4','slide-5','slide-6','slide-7','slide-8'];
+const SLIDE_NAMES = ['Cover','Warm-up','Vocabulary','Vocab Practice','Grammar','Grammar Practice','Speaking','Exit Ticket','Homework'];
+let cur = 0;
+const pillsEl = document.getElementById('navPills');
+SLIDE_NAMES.forEach((n,i)=>{
+  const p = document.createElement('button');
+  p.className = 'nav-pill'+(i===0?' active':'');
+  p.textContent = n;
+  p.onclick = ()=>goToSlide(i);
+  pillsEl.appendChild(p);
+});
+function goToSlide(n){
+  document.getElementById(SLIDES[cur]).classList.remove('active');
+  document.querySelectorAll('.nav-pill')[cur].classList.remove('active');
+  cur = n;
+  document.getElementById(SLIDES[cur]).classList.add('active');
+  document.querySelectorAll('.nav-pill')[cur].classList.add('active');
+  document.getElementById('navCounter').textContent = (cur+1)+' / '+SLIDES.length;
+}
+goToSlide(0);
+function nextSlide(){if(cur<SLIDES.length-1)goToSlide(cur+1);}
+function prevSlide(){if(cur>0)goToSlide(cur-1);}
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key===' ')nextSlide();
+  if(e.key==='ArrowLeft')prevSlide();
+});
+
+// ── WARM-UP: MYSTERY OBJECT RACE ───────────────────────────
+let score1=0, score2=0;
+const OBJECTS = [
+  {zoom:'ZOOM LEVEL 1 — EXTREME CLOSE-UP', hints:['A sponge','A pillow','A towel']},
+  {zoom:'ZOOM LEVEL 1 — EXTREME CLOSE-UP', hints:['A fork','A spoon','A knife']},
+  {zoom:'ZOOM LEVEL 1 — EXTREME CLOSE-UP', hints:['A clock','A phone','A remote']},
+  {zoom:'ZOOM LEVEL 1 — EXTREME CLOSE-UP', hints:['A shoe','A hat','A glove']},
+  {zoom:'ZOOM LEVEL 1 — EXTREME CLOSE-UP', hints:['A bottle','A cup','A bowl']},
+];
+let objIdx = 0;
+function updateHints(){
+  const obj = OBJECTS[objIdx];
+  document.getElementById('mysteryZoomLabel').textContent = obj.zoom;
+  const chips = document.querySelectorAll('.mystery-hint-chip');
+  chips.forEach((c,i)=>{c.textContent=obj.hints[i];c.classList.remove('selected');});
+}
+function selectHint(el){
+  document.querySelectorAll('.mystery-hint-chip').forEach(c=>c.classList.remove('selected'));
+  el.classList.add('selected');
+}
+function addPoint(team){
+  if(team===1){score1++;document.getElementById('score1').textContent=score1;}
+  else{score2++;document.getElementById('score2').textContent=score2;}
+}
+function nextObject(){objIdx=(objIdx+1)%OBJECTS.length;updateHints();}
+function prevObject(){objIdx=(objIdx-1+OBJECTS.length)%OBJECTS.length;updateHints();}
+updateHints();
+
+// ── VOCAB PRACTICE: POSTCARD ───────────────────────────────
+let postcardTheme = null;
+function setTheme(theme, btn){
+  postcardTheme = theme;
+  document.querySelectorAll('.postcard-theme-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+}
+function clearPostcard(){
+  for(let i=1;i<=6;i++) document.getElementById('ans'+i).textContent='';
+  postcardTheme=null;
+  document.querySelectorAll('.postcard-theme-btn').forEach(b=>b.classList.remove('active'));
+}
+
+// ── GRAMMAR PRACTICE: POSTCARD BLANKS ─────────────────────
+function fillBlank(el, answer){
+  el.textContent = answer;
+  el.classList.add('filled');
+}
+
+// ── SPEAKING: ASSIGN DESTINATIONS ─────────────────────────
+let destIdx = 0;
+const destColors = ['#F1C405','#E91E8C','#00BCD4','#FF6B35','#00C853','#7B2FBE','#E53935','#0057FF'];
+function assignDest(card, name){
+  if(card.classList.contains('assigned')){
+    card.classList.remove('assigned');
+    const badge = card.querySelector('.speaking-dest-assigned-badge');
+    if(badge) badge.remove();
+  } else {
+    card.classList.add('assigned');
+    const badge = document.createElement('div');
+    badge.className = 'speaking-dest-assigned-badge';
+    badge.textContent = 'ASSIGNED';
+    badge.style.background = destColors[destIdx%destColors.length];
+    destIdx++;
+    card.appendChild(badge);
+  }
+}
+
+// ── EXIT TICKET: PREFERENCES BUILDER ──────────────────────
+const etAnswers = {};
+const ET_SENTENCES = {
+  1: {yes:'I prefer destinations where people speak my language.', no:'I enjoy immersing myself in places where I don\'t speak the language.'},
+  2: {yes:'I love beach vacations over city trips.', no:'I prefer exploring cities over relaxing at the beach.'},
+  3: {yes:'Trying local food is an essential part of my travel experience.', no:'I usually stick to familiar food when I travel.'},
+  4: {yes:'I like to plan every detail of my trip in advance.', no:'I prefer to be spontaneous and go with the flow.'},
+  5: {yes:'A relaxing resort is my ideal vacation.', no:'I prefer adventure and active trips over resorts.'},
+  6: {yes:'Traveling with family is my top priority.', no:'I enjoy traveling with friends more than with family.'},
+};
+function answerQ(num, val, btn){
+  etAnswers[num] = val;
+  const qEl = document.getElementById('etq'+num);
+  qEl.classList.add('checked');
+  qEl.querySelectorAll('.et-option-btn').forEach(b=>{
+    b.classList.remove('selected-yes','selected-no');
+  });
+  btn.classList.add(val==='yes'?'selected-yes':'selected-no');
+  buildParagraph();
+}
+function buildParagraph(){
+  const keys = Object.keys(etAnswers).sort();
+  if(keys.length===0){
+    document.getElementById('etParagraph').innerHTML='Answer the questions to build your vacation profile paragraph...';
+    return;
+  }
+  let sentences = keys.map(k=>`<span class="et-highlight">${ET_SENTENCES[k][etAnswers[k]]}</span>`);
+  document.getElementById('etParagraph').innerHTML = sentences.join(' ');
+}
+function resetET(){
+  Object.keys(etAnswers).forEach(k=>delete etAnswers[k]);
+  document.querySelectorAll('.et-question').forEach(q=>{
+    q.classList.remove('checked');
+    q.querySelectorAll('.et-option-btn').forEach(b=>b.classList.remove('selected-yes','selected-no'));
+  });
+  document.getElementById('etParagraph').innerHTML='Answer the questions to build your vacation profile paragraph...';
+}
+</script>
+</body>
+</html>
