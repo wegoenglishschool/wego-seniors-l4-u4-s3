@@ -280,6 +280,9 @@ html,body{width:100%;height:100%;overflow:hidden;background:var(--deep);font-fam
       <div class="cover-unit">Simple Past &middot; Travel Vocabulary &middot; 60 min</div>
     </div>
   </div>
+  <div class="cover-lp-row" style="display:flex;justify-content:flex-end;padding:8px 16px 0 16px;">
+    <button class="lp-btn" onclick="openLP('cover')">&#128196; Lesson Plan</button>
+  </div>
   <div class="cover-buttons">
     <button class="cover-btn" style="background:#7B2FBE;" onclick="goToSlide(1)"><span class="cover-btn-name">Warm-up</span><span class="cover-btn-sub">Mystery Object Race</span></button>
     <button class="cover-btn" style="background:#0057FF;" onclick="goToSlide(2)"><span class="cover-btn-name">Vocabulary</span><span class="cover-btn-sub">Good Trip / Bad Trip</span></button>
@@ -897,6 +900,15 @@ html,body{width:100%;height:100%;overflow:hidden;background:var(--deep);font-fam
 <script>
 // ── LP DATA ────────────────────────────────────────────────
 const LP_DATA = {
+  cover: {
+    badge:'UNIT OVERVIEW', badgeColor:'#F1C405', badgeTextColor:'#05046A',
+    title:'On Vacation!',
+    book:'pp. 74–91',
+    goal:'By the end of this unit, students will be able to talk about past vacation experiences, describe trips using expressive language, and communicate travel preferences and stories with confidence.',
+    cues:'General Information: Program SENIORS · Level 4 · Week 4 · Unit 04',
+    dos:'Key Vocabulary: Adjectives to describe trips · Bad and good travel experiences. Grammar: Past Tense BE · Simple Past Tense.',
+    donts:'Slang S2: It was a total blast · It was so worth it · Hit the road · Go with the flow · It\'s a no-brainer. Slang S4: I\'m not a big fan of that · It was a rip-off · I\'m beat · It\'s not my cup of tea · We hit the jackpot.'
+  },
   warmup: {
     badge:'WARM-UP', badgeColor:'#7919ef',
     title:'The Mystery Object Race',
@@ -1025,16 +1037,16 @@ document.addEventListener('keydown',e=>{
 // ── WARM-UP: MYSTERY OBJECT RACE ───────────────────────────
 let score1=0, score2=0;
 const OBJECTS = [
-  {img:'imgs/r01_colander.png', zoom:'ZOOM LEVEL 1 — EXTREME CLOSE-UP', hints:['A bowl','A colander','A hat']},
-  {img:'imgs/r02_thimble.png', zoom:'ZOOM LEVEL 1 — EXTREME CLOSE-UP', hints:['A ring','A thimble','A cap']},
-  {img:'imgs/r03_grater.png', zoom:'ZOOM LEVEL 1 — EXTREME CLOSE-UP', hints:['A fence','A grater','A screen']},
-  {img:'imgs/r04_cork.png', zoom:'ZOOM LEVEL 1 — EXTREME CLOSE-UP', hints:['A button','A coin','A cork']},
-  {img:'imgs/r05_notebook_spiral.png', zoom:'ZOOM LEVEL 1 — EXTREME CLOSE-UP', hints:['A spring','A spiral notebook','A wire']},
-  {img:'imgs/r06_keyboard.png', zoom:'ZOOM LEVEL 1 — EXTREME CLOSE-UP', hints:['A keyboard','A floor','A grid']},
-  {img:'imgs/r07_velcro.png', zoom:'ZOOM LEVEL 1 — EXTREME CLOSE-UP', hints:['A brush','A velcro','A carpet']},
-  {img:'imgs/r08_comb.png', zoom:'ZOOM LEVEL 1 — EXTREME CLOSE-UP', hints:['A ruler','A comb','A fence']},
-  {img:'imgs/r09_orange_peel.png', zoom:'ZOOM LEVEL 1 — EXTREME CLOSE-UP', hints:['A lemon','An orange peel','A ball']},
-  {img:'imgs/r10_coin.png', zoom:'ZOOM LEVEL 1 — EXTREME CLOSE-UP', hints:['A button','A medal','A coin']},
+  {img:'imgs/r01_colander.png', zoom:'ZOOM LEVEL 1 — EXTREME CLOSE-UP', hints:['A bowl','A colander','A sieve']},
+  {img:'imgs/r02_thimble.png', zoom:'ZOOM LEVEL 1 — EXTREME CLOSE-UP', hints:['A button','A thimble','A bell']},
+  {img:'imgs/r03_grater.png', zoom:'ZOOM LEVEL 1 — EXTREME CLOSE-UP', hints:['A colander','A grater','A sieve']},
+  {img:'imgs/r04_cork.png', zoom:'ZOOM LEVEL 1 — EXTREME CLOSE-UP', hints:['A sponge','A cork','A bread piece']},
+  {img:'imgs/r05_notebook_spiral.png', zoom:'ZOOM LEVEL 1 — EXTREME CLOSE-UP', hints:['A binder','A spiral notebook','A book']},
+  {img:'imgs/r06_keyboard.png', zoom:'ZOOM LEVEL 1 — EXTREME CLOSE-UP', hints:['A keyboard spacebar','A blank keycap','A touchpad button']},
+  {img:'imgs/r07_velcro.png', zoom:'ZOOM LEVEL 1 — EXTREME CLOSE-UP', hints:['A zipper','A velcro','Buttons']},
+  {img:'imgs/r08_comb.png', zoom:'ZOOM LEVEL 1 — EXTREME CLOSE-UP', hints:['A brush','A comb','A fork']},
+  {img:'imgs/r09_orange_peel.png', zoom:'ZOOM LEVEL 1 — EXTREME CLOSE-UP', hints:['A basketball surface','An orange peel','A rough stone']},
+  {img:'imgs/r10_coin.png', zoom:'ZOOM LEVEL 1 — EXTREME CLOSE-UP', hints:['A button','A coin','A medal']},
 ];
 let objIdx = 0;
 function updateHints(){
